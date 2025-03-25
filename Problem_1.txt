@@ -1,0 +1,30 @@
+--- Part 1a ---
+
+
+--- Part 1b ---
+
+For tasks (1) and (3):
+
+    javac -classpath `hadoop classpath` -d classes HadoopWordFrequency.java
+
+    jar -cvf hadoopanalysis.jar -C classes/ .
+
+    hadoop jar hadoopanalysis.jar HadoopWordFrequency <input_folder> <output_folder>
+
+(1) Words with count == 1000 -> Lines with prefix EXACT1000:
+(3) Top-100 frequent words -> Lines with prefix TOP100:
+
+For tasks (2) and (4):
+
+    javac -classpath `hadoop classpath` -d classes HadoopWordPairs.java    
+
+    jar -cvf hadoopanalysis.jar -C classes/ .
+
+    hadoop jar WordPairAnalysis.jar HadoopWordPairAnalysis <input_folder> <output_folder>
+
+
+(2) Word pairs with count == 1000 (using distance m <= 2) -> Lines in format EXACT1000_PAIR:word1:word2
+(4) Top-100 number-word pairs (using distance m <= 2) -> Lines in format TOP100_NUMWORD:number:word     count
+
+
+--- Part 1c ---
