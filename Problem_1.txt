@@ -28,3 +28,76 @@ For tasks (2) and (4):
 
 
 --- Part 1c ---
+
+
+Hardware Setup
+--------------
+
+CPU:
+- Architecture: x86_64 (64-bit)
+- Model: Intel(R) Xeon(R) CPU E5-2650 v4 @ 2.20GHz
+- Total Cores: 24 (2 sockets × 12 cores)
+- Threads per Core: 1
+- NUMA Nodes: 2
+- CPU Base Frequency: 2.20 GHz
+- CPU Max Frequency: 2.90 GHz
+
+Memory:
+- Total RAM: 125 GB
+- Used: 55 GB
+- Free: 53 GB
+- Cache/Buffers: 15 GB
+- Available: 68 GB
+- Swap: 4 GB (fully used)
+
+
+Scalability Results Table
+==========================
+
+| Step | Subdirectories Included             | Real Time (s) | User Time (s) | Sys Time (s) |
+|------|-------------------------------------|----------------|----------------|---------------|
+| 1    | AA                                  | 0m40.008s      | 1m25.868s      | 0m4.357s      |
+| 2    | AA, AB                              | 1m19.969s      | 2m45.854s      | 0m6.146s      |
+| 3    | AA, AB, AC                          | 1m56.279s      | 4m23.419s      | 0m8.874s      |
+| 4    | AA, AB, AC, AD                      | 2m39.442s      | 6m13.680s      | 0m11.698s     |
+| 5    | AA, AB, AC, AD, AE                  | 2m23.962s      | 7m59.348s      | 0m10.943s     |
+| 6    | AA, AB, AC, AD, AE, AF              | 2m50.376s      | 8m21.319s      | 0m10.024s     |
+| 7    | AA, AB, AC, AD, AE, AF, AG          | 4m42.631s      | 12m47.956s     | 0m15.744s     |
+| 8    | AA, AB, AC, AD, AE, AF, AG, AH      | 5m1.721s       | 12m53.605s     | 0m16.938s     |
+| 9    | AA, AB, AC, AD, AE, AF, AG, AH, AI  | 5m51.133s      | 16m26.403s     | 0m18.742s     |
+| 10   | AA, AB, AC, ..., AJ                 | 6m30.172s      | 16m57.929s     | 0m22.727s     |
+| 11   | AA, AB, AC, ..., AK                 | 7m3.110s       | 18m39.885s     | 0m23.336s     |
+
+
+The runtime data demonstrates a generally increasing trend as 
+more subdirectories (and thus more articles) are added. Initially, 
+the increase in runtime is roughly linear, indicating good scalability.
+However, after step 6 (AA to AF), the runtime begins to grow more 
+sharply, suggesting the onset of bottlenecks — likely due to increased
+ I/O and memory pressure or reducer load. overall the increse in runtime 
+followes a linear increase as the size of the data increases.
+
+
+ Scalability of Hadoop Word Pair Analysis
+========================================
+(Y-axis: Real Execution Time in seconds)
+
+ 450 |                                                          *
+ 420 |                                                        *
+ 390 |                                                   *
+ 360 |                                              *
+ 330 |
+ 300 |                                        *
+ 270 |
+ 240 |
+ 210 |
+ 180 |                                 *
+ 150 |                           *
+ 120 |                     *
+  90 |               *
+  60 |         *
+  30 |
+   0 |*
+     +-----------------------------------------------------------------
+      1        2    3      4     5    6       7      8   9   10 11
+         (Step = Number of Subdirectories)

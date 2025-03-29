@@ -133,9 +133,11 @@ public class HadoopWordPairAnalysis extends Configured implements Tool {
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);
 
-        FileInputFormat.setInputPaths(job, new Path(args[0]));
+        for (int i = 0; i < args.length - 1; i++) {
+            FileInputFormat.addInputPath(job, new Path(args[i]));
+        }
         FileInputFormat.setInputDirRecursive(job, true); // Very important
-        FileOutputFormat.setOutputPath(job, new Path(args[1]));
+        FileOutputFormat.setOutputPath(job, new Path(args[args.length - 1]));
 
         return job.waitForCompletion(true) ? 0 : 1;
     }
