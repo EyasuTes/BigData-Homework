@@ -1,5 +1,6 @@
 --- Part 1a ---
-
+private static final Pattern WORD_PATTERN = Pattern.compile("^[a-zA-Z]{6,24}$");
+private static final Pattern NUMBER_PATTERN = Pattern.compile("^-?[0-9]+(\\.[0-9]+)?$");
 
 --- Part 1b ---
 
@@ -69,13 +70,11 @@ Scalability Results Table
 | 11   | AA, AB, AC, ..., AK                 | 7m3.110s       | 18m39.885s     | 0m23.336s     |
 
 
-The runtime data demonstrates a generally increasing trend as 
-more subdirectories (and thus more articles) are added. Initially, 
-the increase in runtime is roughly linear, indicating good scalability.
-However, after step 6 (AA to AF), the runtime begins to grow more 
-sharply, suggesting the onset of bottlenecks — likely due to increased
- I/O and memory pressure or reducer load. overall the increse in runtime 
-followes a linear increase as the size of the data increases.
+
+the runtime shows a generally linear increase in runtime as we increase the number of
+directories. we used the HPC cluster to conduct this test and have showen a graph bellow 
+to illustrate the trend. would be interesting to see how it performs in hdfs but we were not 
+able to test in hdfs.
 
 
  Scalability of Hadoop Word Pair Analysis
@@ -101,3 +100,8 @@ followes a linear increase as the size of the data increases.
      +-----------------------------------------------------------------
       1        2    3      4     5    6       7      8   9   10 11
          (Step = Number of Subdirectories)
+
+
+bellow is an example of how we ran the map reduce test on multiple directories. which required us to make some modifications to the code.
+
+$ time hadoop jar launch-hadoop/HadoopWordCount.jar HadoopWordPairAnalysis   Data/Wikipedia-En-41784-Articles/AA   Data/Wikipedia-En-41784-Articles/AB   Data/Wikipedia-En-41784-Articles/AC   Data/Wikipedia-En-41784-Articles/AD   Data/Wikipedia-En-41784-Articles/AE   Data/Wikipedia-En-41784-Articles/AF   Data/Wikipedia-En-41784-Articles/AG   Data/Wikipedia-En-41784-Articles/AH   Data/Wikipedia-En-41784-Articles/AI   output1c/output_up_to_AI

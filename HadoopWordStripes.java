@@ -25,10 +25,10 @@ public class HadoopWordStripes extends Configured implements Tool {
     private final static IntWritable one = new IntWritable(1);
 
     // Regular expression for words (lowercase letters and dashes, 6-24 characters)
-    private static final Pattern WORD_PATTERN = Pattern.compile("^[a-z-]{6,24}$");
+    private static final Pattern WORD_PATTERN = Pattern.compile("^[a-z_-]{6,24}$");
 
     // Regular expression for numbers (digits, decimal points, at most one leading dash, 4-16 characters)
-    private static final Pattern NUMBER_PATTERN = Pattern.compile("^-?[0-9]+(\\.[0-9]+)?$");
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("^-?[0-9]{1,}(?:[.,][0-9]+)?$");
 
     public static class Stripe extends MapWritable {
 

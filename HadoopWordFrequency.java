@@ -37,7 +37,7 @@ public class HadoopWordFrequency extends Configured implements Tool {
         public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             String[] tokens = value.toString().split("\\s+");
             for (String token : tokens) {
-                token = token.trim().toLowerCase();  // Normalize to lowercase
+                token = token.trim().toLowerCase();  
                 if (isValidWord(token)) {
                     word.set(token);
                     context.write(word, one);

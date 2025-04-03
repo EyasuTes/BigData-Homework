@@ -26,18 +26,18 @@ public class HadoopWordCount extends Configured implements Tool {
         private Text word = new Text();
 
         // Regular expression for words (lowercase letters and dashes, 6-24 characters)
-        private static final Pattern WORD_PATTERN = Pattern.compile("^[a-z-]{6,24}$");
+        private static final Pattern WORD_PATTERN = Pattern.compile("^[a-z_-]{6,24}$");
         
         // Regular expression for numbers (digits, decimal points, at most one leading dash, 4-16 characters)
-        private static final Pattern NUMBER_PATTERN = Pattern.compile("^-?[0-9]+(\\.[0-9]+)?$");
+        private static final Pattern NUMBER_PATTERN = Pattern.compile("^-?[0-9]{1,}(?:[.,][0-9]+)?$");
 
         @Override
         public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             
-            String[] tokens = value.toString().split("\\s+"); // Split by spaces
+            String[] tokens = value.toString().split("\\s+"); 
             
             for (String token : tokens) {
-                token = token.trim(); // Remove leading/trailing whitespace
+                token = token.trim(); /
                 
                 if (isValidWord(token) || isValidNumber(token)) {
                     word.set(token);
@@ -56,7 +56,7 @@ public class HadoopWordCount extends Configured implements Tool {
         private boolean isValidNumber(String token) {
             Matcher matcher = NUMBER_PATTERN.matcher(token);
             if (matcher.matches()) {
-                return token.length() >= 4 && token.length() <= 16; // Ensure length constraint
+                return token.length() >= 4 && token.length() <= 16; 
             }
             return false;
         }

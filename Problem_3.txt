@@ -1,0 +1,8 @@
+Survived fares: 48.39540760233917
+Non_Survivers fares: 22.117886885245877
+Difference between fares: 26.277520717093292
+ The difference is large, Hypothesis not supported.
+ 
+The average fair price of the survivors is 48.40 where as the 
+price of the non-survivers is 22.12. the results suggest that 
+the hypothesis is false.
