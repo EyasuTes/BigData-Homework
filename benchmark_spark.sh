@@ -22,7 +22,7 @@ do
   START=$(date +%s)
 
   # Launching for different questions
-  spark-submit --class SparkWordFrequency sparkwordfrequency.jar "$CLEANED_INPUT_PATH" $OUTPUT_DIR >/dev/null 2>&1
+  spark-submit --class SparkWordCountb sparkwordcountb.jar "$CLEANED_INPUT_PATH" $OUTPUT_DIR >/dev/null 2>&1
   spark-submit --class SparkWordPairs sparkwordpairs.jar "$CLEANED_INPUT_PATH" $OUTPUT_DIR >/dev/null 2>&1
   spark-submit --class SparkTop100Words sparktop100words.jar "$CLEANED_INPUT_PATH" $OUTPUT_DIR >/dev/null 2>&1
   spark-submit --class SparkTop100NumWord sparktop100numword.jar "$CLEANED_INPUT_PATH" $OUTPUT_DIR >/dev/null 2>&1

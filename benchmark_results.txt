@@ -1,4 +1,4 @@
-Benchmark Spark Jobs (WordFrequency, WordPairs, Top100Words, Top100NumWord)
+Benchmark Spark Jobs (WordCountb, WordPairs, Top100Words, Top100NumWord)
 ==========================================================
 \n[INPUT: Wikipedia-En-41784-Articles/AA]
 Duration: 19 seconds
