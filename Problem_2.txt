@@ -1,0 +1,63 @@
+--- Part 2a ---
+
+--- Part 2b ---
+
+mkdir -p classes
+rm -rf outputs
+mkdir -p outputs
+
+
+1)
+scalac -classpath "$SPARK_HOME/jars/*" -d classes SparkWordCountb.scala
+jar -cvf sparkwordcountb.jar -C classes/ .
+spark-submit --class SparkWordCountb sparkwordcountb.jar Wikipedia-En-41784-Articles/AA outputs
+
+2)
+scalac -classpath "$SPARK_HOME/jars/*" -d classes SparkWordCountb.scala
+jar -cvf sparkwordpairs.jar -C classes/ .
+spark-submit --class SparkWordPairs sparkwordpairs.jar Wikipedia-En-41784-Articles/AA outputs
+
+3)
+scalac -classpath "$SPARK_HOME/jars/*" -d classes SparkTop100Words.scala
+jar -cvf sparktop100words.jar -C classes/ .
+spark-submit --class SparkTop100Words sparktop100words.jar Wikipedia-En-41784-Articles/AA outputs
+
+4)
+scalac -classpath "$SPARK_HOME/jars/*" -d classes SparkTop100NumWord.scala
+jar -cvf sparktop100numword.jar -C classes/ .
+spark-submit --class SparkTop100NumWord sparktop100numword.jar Wikipedia-En-41784-Articles/AA outputs
+
+--- Part 2c ---
+
+./benchmark_spark.sh
+
+Hardware Setup:
+
+- OS: Ubuntu Linux
+- CPU: 13th Gen Intel(R) Core(TM) i7-1355U
+- RAM: 16 GiB
+- Disk: 512 GB NVMe SSD (ROTA = 0)
+- Free space: 55 GiB available on main partition
+
+
+Scalability Results Table:
+
+| Step | Subdirectories Included             | Real Time (s) |
+|------|-------------------------------------|----------------|
+| 1    | AA                                  | 19             |
+| 2    | AA, AB                              | 28             |
+| 3    | AA, AB, AC                          | 39             |
+| 4    | AA, AB, AC, AD                      | 71             |
+| 5    | AA, AB, AC, AD, AE                  | 82             |
+| 6    | AA, AB, AC, AD, AE, AF              | 110            |
+| 7    | AA, AB, AC, AD, AE, AF, AG          | 118            |
+| 8    | AA, AB, AC, AD, AE, AF, AG, AH      | 144            |
+| 9    | AA, AB, AC, AD, AE, AF, AG, AH, AI  | 149            |
+| 10   | AA, AB, AC, ..., AJ                 | 169            |
+| 11   | AA, AB, AC, ..., AK                 | 162            |
+
+Analysis
+--------
+(See Problem_2_Graph.png)
+We observe an almost-linear behavior.
+Our solution has a correct scalability!

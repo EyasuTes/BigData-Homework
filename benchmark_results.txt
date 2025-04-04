@@ -1,0 +1,24 @@
+Benchmark Spark Jobs (WordFrequency, WordPairs, Top100Words, Top100NumWord)
+==========================================================
+\n[INPUT: Wikipedia-En-41784-Articles/AA]
+Duration: 19 seconds
+\n[INPUT: Wikipedia-En-41784-Articles/AA,Wikipedia-En-41784-Articles/AB]
+Duration: 28 seconds
+\n[INPUT: Wikipedia-En-41784-Articles/AA,Wikipedia-En-41784-Articles/AB,Wikipedia-En-41784-Articles/AC]
+Duration: 39 seconds
+\n[INPUT: Wikipedia-En-41784-Articles/AA,Wikipedia-En-41784-Articles/AB,Wikipedia-En-41784-Articles/AC,Wikipedia-En-41784-Articles/AD]
+Duration: 71 seconds
+\n[INPUT: Wikipedia-En-41784-Articles/AA,Wikipedia-En-41784-Articles/AB,Wikipedia-En-41784-Articles/AC,Wikipedia-En-41784-Articles/AD,Wikipedia-En-41784-Articles/AE]
+Duration: 82 seconds
+\n[INPUT: Wikipedia-En-41784-Articles/AA,Wikipedia-En-41784-Articles/AB,Wikipedia-En-41784-Articles/AC,Wikipedia-En-41784-Articles/AD,Wikipedia-En-41784-Articles/AE,Wikipedia-En-41784-Articles/AF]
+Duration: 110 seconds
+\n[INPUT: Wikipedia-En-41784-Articles/AA,Wikipedia-En-41784-Articles/AB,Wikipedia-En-41784-Articles/AC,Wikipedia-En-41784-Articles/AD,Wikipedia-En-41784-Articles/AE,Wikipedia-En-41784-Articles/AF,Wikipedia-En-41784-Articles/AG]
+Duration: 118 seconds
+\n[INPUT: Wikipedia-En-41784-Articles/AA,Wikipedia-En-41784-Articles/AB,Wikipedia-En-41784-Articles/AC,Wikipedia-En-41784-Articles/AD,Wikipedia-En-41784-Articles/AE,Wikipedia-En-41784-Articles/AF,Wikipedia-En-41784-Articles/AG,Wikipedia-En-41784-Articles/AH]
+Duration: 144 seconds
+\n[INPUT: Wikipedia-En-41784-Articles/AA,Wikipedia-En-41784-Articles/AB,Wikipedia-En-41784-Articles/AC,Wikipedia-En-41784-Articles/AD,Wikipedia-En-41784-Articles/AE,Wikipedia-En-41784-Articles/AF,Wikipedia-En-41784-Articles/AG,Wikipedia-En-41784-Articles/AH,Wikipedia-En-41784-Articles/AI]
+Duration: 149 seconds
+\n[INPUT: Wikipedia-En-41784-Articles/AA,Wikipedia-En-41784-Articles/AB,Wikipedia-En-41784-Articles/AC,Wikipedia-En-41784-Articles/AD,Wikipedia-En-41784-Articles/AE,Wikipedia-En-41784-Articles/AF,Wikipedia-En-41784-Articles/AG,Wikipedia-En-41784-Articles/AH,Wikipedia-En-41784-Articles/AI,Wikipedia-En-41784-Articles/AJ]
+Duration: 169 seconds
+\n[INPUT: Wikipedia-En-41784-Articles/AA,Wikipedia-En-41784-Articles/AB,Wikipedia-En-41784-Articles/AC,Wikipedia-En-41784-Articles/AD,Wikipedia-En-41784-Articles/AE,Wikipedia-En-41784-Articles/AF,Wikipedia-En-41784-Articles/AG,Wikipedia-En-41784-Articles/AH,Wikipedia-En-41784-Articles/AI,Wikipedia-En-41784-Articles/AJ,Wikipedia-En-41784-Articles/AK]
+Duration: 162 seconds
