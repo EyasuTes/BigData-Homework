@@ -5,27 +5,77 @@
 mkdir -p classes
 rm -rf outputs
 mkdir -p outputs
+#Make sure you have the Wikipedia dataset on the current folder.
 
 
 1)
+
 scalac -classpath "$SPARK_HOME/jars/*" -d classes SparkWordCountb.scala
 jar -cvf sparkwordcountb.jar -C classes/ .
 spark-submit --class SparkWordCountb sparkwordcountb.jar Wikipedia-En-41784-Articles/AA outputs
 
+Result : 0
+
+Execution time:
+real	0m11.907s
+user	1m14.332s
+sys	0m2.859s
+
 2)
-scalac -classpath "$SPARK_HOME/jars/*" -d classes SparkWordCountb.scala
+
+scalac -classpath "$SPARK_HOME/jars/*" -d classes SparkWordPairs.scala
 jar -cvf sparkwordpairs.jar -C classes/ .
 spark-submit --class SparkWordPairs sparkwordpairs.jar Wikipedia-En-41784-Articles/AA outputs
 
+Result : 0
+
+Execution time:
+real	0m40.283s
+user	5m58.261s
+sys	0m4.890s
+
+
 3)
+
 scalac -classpath "$SPARK_HOME/jars/*" -d classes SparkTop100Words.scala
 jar -cvf sparktop100words.jar -C classes/ .
 spark-submit --class SparkTop100Words sparktop100words.jar Wikipedia-En-41784-Articles/AA outputs
 
+Result : looking like this : (partial overwiew)
+TOP100:during 9589
+TOP100:between 9443
+TOP100:called 6449
+TOP100:number 6202
+TOP100:through 6152
+TOP100:including 6150
+TOP100:became 5716
+TOP100:united 5678
+
+Execution time:
+real	0m10.796s
+user	1m11.914s
+sys	0m1.890s
+
 4)
+
 scalac -classpath "$SPARK_HOME/jars/*" -d classes SparkTop100NumWord.scala
 jar -cvf sparktop100numword.jar -C classes/ .
 spark-submit --class SparkTop100NumWord sparktop100numword.jar Wikipedia-En-41784-Articles/AA outputs
+
+Result : looking like this : (partial overwiew)
+TOP100_NUMWORD:2011:census 134
+TOP100_NUMWORD:2001:census 128
+TOP100_NUMWORD:2011,:january 117
+TOP100_NUMWORD:2010:census 113
+TOP100_NUMWORD:2011,:december 109
+TOP100_NUMWORD:2001:september 99
+TOP100_NUMWORD:2011,:august 99
+TOP100_NUMWORD:2000:between 96
+
+Execution time:
+real	0m17.042s
+user	2m16.725s
+sys	0m2.491s
 
 --- Part 2c ---
 
